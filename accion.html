@@ -1,0 +1,348 @@
+<script src="librerias/socket.io/socket.io.min.js"></script>
+<!DOCTYPE html>
+<html lang="es">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <title>proyecto plantilla</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/sandia.png">
+    <link rel="icon" type="image/png" href="img/sandia.png">
+    <!-- Favicon  cSpell:disable -->
+    <link href="img/favicon.ico" rel="icon">
+    <!-- Icon Font Stylesheet -->
+    <link href="librerias/fontawesome/css/all.min.css" rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="librerias/tema/bots/cyborg.min.css" rel="stylesheet">
+    <!-- Template Stylesheet-->
+    <link href="librerias/tema/oscuro/style.css" rel="stylesheet">
+   
+</head>
+
+<body class="text-smsoft">
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner"
+            class="show bg-secondary position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+
+            <div class="spinner-grow text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-warning" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pb-3">
+            <nav class="navbar">
+                <a id="t_fuente" class="navbar-brand mx-4 mb-3">
+                    <h4 id="sandia" class="text-white ">🆂🅰🅽🅳🅸🅰</h4>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0" id="nombre_user">Jhon Doe</h6>
+                        <span id="nombre_user2">Admin</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a onclick="ViewsLoad('vista1.html');" class="nav-item nav-link active"><i
+                            class="fa-duotone fa-gauge-max"></i> Dashboard</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                                class="fa-duotone fa-laptop"></i> Elements</a>
+                        <div class="dropdown-menu ">
+
+                            <a onclick="ViewsLoad('button.html');" class="dropdown-item">Buttons</a>
+
+                            <a onclick="ViewsLoad('typography.html');" class="dropdown-item">Typography</a>
+
+                            <a onclick="ViewsLoad('element.html');" class="dropdown-item">Other Elements</a>
+
+
+                        </div>
+                    </div>
+                    <a onclick="ViewsLoad('widget.html');" class="nav-item nav-link"><i
+                            class="fa-duotone fa-table-cells"></i> Widgets</a>
+                    <a onclick="ViewsLoad('form.html');" class="nav-item nav-link"><i
+                            class="fa-duotone fa-keyboard-left"></i> Forms</a>
+                    <a onclick="ViewsLoad('table.html');" class="nav-item nav-link"><i
+                            class="fa fa-table me-2"></i>Tables</a>
+                    <a onclick="ViewsLoad('chart.html');" class="nav-item nav-link"><i
+                            class="fa-duotone fa-chart-line-up"></i> Charts</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                                class="fa-duotone fa-file-lines"></i> Pages</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a onclick="ViewsLoad('pruebas/pruebas_view.html');" class="dropdown-item">Pruebas</a>
+                            <a onclick="ViewsLoad('signin.html');" class="dropdown-item">Sign In</a>
+                            <a onclick="ViewsLoad('signup.html');" class="dropdown-item">Sign Up</a>
+                            <a onclick="ViewsLoad('404.html');" class="dropdown-item">404 Error</a>
+                            <a onclick="ViewsLoad('blank.html');" class="dropdown-item">Blank Page</a>
+                            <a onclick="ViewsLoad('cuentas.html');" class="dropdown-item">cuentas</a>
+                            <a onclick="ViewsLoad('notificaciones.html');" class="dropdown-item">cuentas</a>
+                        </div>
+                    </div>
+                    <a href="inicio.html" class="nav-item nav-link"><i class="fa-brands fa-mdb"></i>
+                        Material-Dashboard</a>
+
+                    <div id="cont_menu w-100">
+                        <!--Modulo-->
+                        <div class="nav-item accordion-item  text-white ps-1 pe-1 pl-1 pr-1 pb-1 ">
+                            <a id="papa_1" data-target="#contenido_papa_1" data-bs-target="#contenido_papa_1"
+                                aria-controls="contenido_papa_1"
+                                class="w-100 m-0 p-2 nivel_modulo  accordion-header nav-item text-white text-decoration-none"
+                                type="button" data-toggle="collapse" data-bs-toggle="collapse" aria-expanded="true">
+                                <i class=" fas fa-user-check"></i>
+                                Admisiones
+                            </a>
+                            <div id="contenido_papa_1" aria-labelledby="papa_1" class="accordion-collapse collapse "
+                                data-parent="#accordionExample" data-bs-parent="#accordionExample">
+                                <!--Procesos-->
+                                <div class="nav-item nav-link accordion-item pe-1 pr-1 pt-1 pb-1">
+                                    <a id="papa1_15" data-target="#contenido_papa1_15"
+                                        data-bs-target="#contenido_papa1_15" aria-controls="contenido_papa1_15"
+                                        class="m-0 p-1 border border-light rounded accordion-header w-100 nav-item nav-link nivel_proceso"
+                                        type="button" data-toggle="collapse" data-bs-toggle="collapse"
+                                        aria-expanded="true">
+
+                                        <i class="fas fa-angle-double-right nav-icon icon-md "></i>
+                                        Configuraciones
+
+                                    </a>
+                                    <div id="contenido_papa1_15" aria-labelledby="papa1_15"
+                                        class=" p-0 nav-item nav-link accordion-collapse collapse "
+                                        data-parent="#contenido_papa_1" data-bs-parent="#contenido_papa_1">
+
+                                        <a onclick="ViewsLoadNoMod_vs2('Configuracion/Maestros.Html?v=1688763015740','Admisiones > Configuraciones. > Parametros',1,37,15, false)"
+                                            class="w-100 nivel_opcion nav-item nav-link"><i
+                                                class="fa-duotone fa-table-cells"></i> Parametros</a>
+                                    </div>
+                                </div> <!--Procesos-->
+                                <div class="nav-item nav-link accordion-item pe-1 pr-1 pt-1 pb-1">
+                                    <a id="papa1_1" data-target="#contenido_papa1_1" data-bs-target="#contenido_papa1_1"
+                                        aria-controls="contenido_papa1_1"
+                                        class="m-0 p-1 border border-light rounded accordion-header w-100 nav-item nav-link nivel_proceso"
+                                        type="button" data-toggle="collapse" data-bs-toggle="collapse"
+                                        aria-expanded="true">
+
+                                        <i class="fas fa-angle-double-right nav-icon icon-md "></i>
+                                        Pacientes
+
+                                    </a>
+                                    <div id="contenido_papa1_1" aria-labelledby="papa1_1"
+                                        class=" p-0 nav-item nav-link accordion-collapse collapse "
+                                        data-parent="#contenido_papa_1" data-bs-parent="#contenido_papa_1">
+
+                                        <a onclick="ViewsLoadNoMod_vs2('Agenda/Citas_pac_dia.Html?v=1688763015740','Admisiones > Pacientes. > Citas Del Dia',1,49,1, true)"
+                                            class="w-100 nivel_opcion nav-item nav-link"><i
+                                                class="fa-duotone fa-table-cells"></i> Citas Del Dia</a><a
+                                            onclick="ViewsLoadNoMod_vs2('Admision/Historial_paciente.Html?v=1688763015740','Admisiones > Pacientes. > Historial',1,65,1, false)"
+                                            class="w-100 nivel_opcion nav-item nav-link"><i
+                                                class="fa-duotone fa-table-cells"></i> Historial</a>
+                                    </div>
+                                </div> <!--Procesos-->
+                                <div class="nav-item nav-link accordion-item pe-1 pr-1 pt-1 pb-1">
+                                    <a id="papa1_54" data-target="#contenido_papa1_54"
+                                        data-bs-target="#contenido_papa1_54" aria-controls="contenido_papa1_54"
+                                        class="m-0 p-1 border border-light rounded accordion-header w-100 nav-item nav-link nivel_proceso"
+                                        type="button" data-toggle="collapse" data-bs-toggle="collapse"
+                                        aria-expanded="true">
+
+                                        <i class="fas fa-angle-double-right nav-icon icon-md "></i>
+                                        Reportes
+
+                                    </a>
+                                    <div id="contenido_papa1_54" aria-labelledby="papa1_54"
+                                        class=" p-0 nav-item nav-link accordion-collapse collapse "
+                                        data-parent="#contenido_papa_1" data-bs-parent="#contenido_papa_1">
+
+                                        <a onclick="ViewsLoadNoMod_vs2('Admision/reportes/mis_atenciones.html?v=1688763015740','Admisiones > Reportes. > Mis atenciones',1,112,54, true)"
+                                            class="w-100 nivel_opcion nav-item nav-link"><i
+                                                class="fa-duotone fa-table-cells"></i> Mis atenciones</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav id="navbar_dom" class="navbar navbar-expand navbar-primary bg-secondary sticky-top px-4 py-0">
+
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+
+
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-envelope me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Message</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 20px; height: 20px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all message</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-bell me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Notificatin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
+                                style="width: 20px; height: 20px;">
+                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="#" class="dropdown-item" onclick="cerrarsession()">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+            <div id="conedor_dom">
+
+            </div>
+            <!-- Footer Start -->
+            <div id="footer_dom" class="container-fluid pt-4 px-4">
+                <div class=" rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">🍉Sandia.</a>, Zachariel
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Diseñado por <a>Zach Jose</a>
+                            <br>Distributed By: <a target="_blank">The OneAngel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
+            <i class="fa fa-arrow-up"></i>
+        </a>
+    </div>
+
+    <script src="librerias/tema/bootstrap.bundle.min.js"></script>
+    <script src="librerias/tema/popper.min.js"></script>
+    <script src="librerias/fontawesome/js/all.min.js"></script>
+
+    <!-- Template Javascript -->
+</body>
+
+<script>
+    (async () => {
+        if (document.body.contains(document.getElementById("conedor_dom"))) {
+            if (typeof init_dom !== 'function') {
+                await import("./librerias_propias/main.js");
+                init_dom();
+            } else {
+                init_dom();
+            }
+        }
+    })();
+</script>
+
+</html>
